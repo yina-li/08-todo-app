@@ -76,37 +76,37 @@ function loadxmldoc() {
 loadxmldoc();
 
 function addclose() {
-        var myNodelist = document.getElementsByTagName("LI");
-        var i;
-        for (i = 0; i < myNodelist.length; i++) {
-            var span = document.createElement("SPAN");
-            var txt = document.createTextNode("\u00D7");
-            span.className = "close";
-            span.appendChild(txt);
-            myNodelist[i].appendChild(span);
-        }
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
     }
-    
-    function finishtodo() {
-        var close = document.getElementsByClassName("close");
-        var i;
-        for (i = 0; i < close.length; i++) {
-            close[i].onclick = function () {
-                var div = this.parentElement;
-                console.log(this.parentNode.id);
-                var postid = this.parentNode.id;
-                div.style.display = "none";
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        console.log(this.responseText);
-                    }
-                };
-                xhttp.open("DELETE", `https://cse204.work/todos/${postid}`, true);
-                xhttp.setRequestHeader("x-api-key", "3d3b6b-cbe564-ffd618-b64d7b-4af84e");
-                xhttp.send();
-            }
-        }
+}
+
+function finishtodo() {
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            console.log(this.parentNode.id);
+            var postid = this.parentNode.id;
+            div.style.display = "none";
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                }
+            };
+            xhttp.open("DELETE", `https://cse204.work/todos/${postid}`, true);
+            xhttp.setRequestHeader("x-api-key", "3d3b6b-cbe564-ffd618-b64d7b-4af84e");
+            xhttp.send();
+        }
     }
+}
 
 
